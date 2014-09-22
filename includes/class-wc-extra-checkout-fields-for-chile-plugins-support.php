@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Methods to make integrations with others plugins.
  */
-class Extra_Checkout_Fields_For_Brazil_Plugins_Support {
+class Extra_Checkout_Fields_For_Chile_Plugins_Support {
 
 	/**
 	 * Initialize integrations.
@@ -34,8 +34,8 @@ class Extra_Checkout_Fields_For_Brazil_Plugins_Support {
 			}
 
 			if ( 2 == $order->billing_persontype ) {
-				$args['cliente_cnpj']         = str_replace( array( '-', '.' ), '', $order->billing_cnpj );
-				$args['cliente_razao_social'] = $order->billing_company;
+				$args['cliente_rut']         = str_replace( array( '-', '.' ), '', $order->billing_rut );
+				$args['cliente_razon_social'] = $order->billing_company;
 			}
 		}
 
@@ -52,7 +52,7 @@ class Extra_Checkout_Fields_For_Brazil_Plugins_Support {
 	 */
 	public function moip( $args, $order ) {
 		$args['pagador_numero'] = $order->billing_number;
-		$args['pagador_bairro'] = $order->billing_neighborhood;
+		$args['pagador_Municipalidad'] = $order->billing_neighborhood;
 
 		return $args;
 	}
@@ -83,4 +83,4 @@ class Extra_Checkout_Fields_For_Brazil_Plugins_Support {
 	}
 }
 
-new Extra_Checkout_Fields_For_Brazil_Plugins_Support();
+new Extra_Checkout_Fields_For_chile_Plugins_Support();
