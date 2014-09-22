@@ -1,12 +1,13 @@
 <?php
 /**
- * Plugin Name: WooCommerce Extra Checkout Fields for Brazil
- * Plugin URI: https://github.com/claudiosmweb/woocommerce-extra-checkout-fields-for-brazil
- * Description: Adiciona novos campos para Pessoa Física ou Jurídica, Data de Nascimento, Sexo, Número, Bairro e Celular. Além de máscaras em campos, aviso de e-mail incorreto e auto preenchimento dos campos de endereço pelo CEP.
- * Version: 3.2.0
+ * Plugin Name: WooCommerce Extra Checkout Fields for Chile
+ * Plugin URI: https://github.com/Etiendas/woocommerce-extra-checkout-fields-for-chile
+ * Description: Agrega nuevos campos como: RUT, Fecha de Nacimiento, Sexo, Número, Número de Móvil.
+ * Version: 0.0.1
  * Author: claudiosanches
  * Author URI: http://claudiosmweb.com/
- * Text Domain: woocommerce-extra-checkout-fields-for-brazil
+ * Edithor URI: https://etiendas.cl
+ * Text Domain: woocommerce-extra-checkout-fields-for-chile
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Domain Path: /languages
@@ -17,19 +18,19 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-if ( ! class_exists( 'Extra_Checkout_Fields_For_Brazil' ) ) :
+if ( ! class_exists( 'Extra_Checkout_Fields_For_Chile' ) ) :
 
 /**
  * Plugin main class.
  */
-class Extra_Checkout_Fields_For_Brazil {
+class Extra_Checkout_Fields_For_Chile {
 
 	/**
 	 * Plugin version.
 	 *
 	 * @var string
 	 */
-	const VERSION = '3.2.0';
+	const VERSION = '0.0.1';
 
 	/**
 	 * Instance of this class.
@@ -77,10 +78,10 @@ class Extra_Checkout_Fields_For_Brazil {
 	 * @return void
 	 */
 	public function load_plugin_textdomain() {
-		$locale = apply_filters( 'plugin_locale', get_locale(), 'woocommerce-extra-checkout-fields-for-brazil' );
+		$locale = apply_filters( 'plugin_locale', get_locale(), 'woocommerce-extra-checkout-fields-for-chile' );
 
-		load_textdomain( 'woocommerce-extra-checkout-fields-for-brazil', trailingslashit( WP_LANG_DIR ) . 'woocommerce-extra-checkout-fields-for-brazil/woocommerce-extra-checkout-fields-for-brazil-' . $locale . '.mo' );
-		load_plugin_textdomain( 'woocommerce-extra-checkout-fields-for-brazil', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		load_textdomain( 'woocommerce-extra-checkout-fields-for-chile', trailingslashit( WP_LANG_DIR ) . 'woocommerce-extra-checkout-fields-for-chile/woocommerce-extra-checkout-fields-for-chile-' . $locale . '.mo' );
+		load_plugin_textdomain( 'woocommerce-extra-checkout-fields-for-chile', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 
 	/**
@@ -89,9 +90,9 @@ class Extra_Checkout_Fields_For_Brazil {
 	 * @return void
 	 */
 	private function includes() {
-		include_once 'includes/class-wc-extra-checkout-fields-for-brazil-front-end.php';
-		include_once 'includes/class-wc-extra-checkout-fields-for-brazil-plugins-support.php';
-		include_once 'includes/class-wc-extra-checkout-fields-for-brazil-api.php';
+		include_once 'includes/class-wc-extra-checkout-fields-for-chile-front-end.php';
+		include_once 'includes/class-wc-extra-checkout-fields-for-chile-plugins-support.php';
+		include_once 'includes/class-wc-extra-checkout-fields-for-chile-api.php';
 	}
 
 	/**
@@ -100,7 +101,7 @@ class Extra_Checkout_Fields_For_Brazil {
 	 * @return void
 	 */
 	private function admin_includes() {
-		include_once 'includes/class-wc-extra-checkout-fields-for-brazil-admin.php';
+		include_once 'includes/class-wc-extra-checkout-fields-for-chile-admin.php';
 	}
 
 	/**
@@ -118,8 +119,7 @@ class Extra_Checkout_Fields_For_Brazil {
 			'mailcheck'       => 1,
 			'maskedinput'     => 1,
 			'addresscomplete' => 1,
-			'validate_cpf'    => 1,
-			'validate_cnpj'   => 1
+			'validate_rut'    => 1
 		);
 
 		add_option( 'wcbcf_settings', $default );
@@ -132,18 +132,18 @@ class Extra_Checkout_Fields_For_Brazil {
 	 * @return string Fallack notice.
 	 */
 	public function woocommerce_fallback_notice() {
-		echo '<div class="error"><p>' . sprintf( __( 'WooCommerce Extra Checkout Fields for Brazil depends on %s to work!', 'woocommerce-extra-checkout-fields-for-brazil' ), '<a href="http://wordpress.org/extend/plugins/woocommerce/">' . __( 'WooCommerce', 'woocommerce-extra-checkout-fields-for-brazil' ) . '</a>' ) . '</p></div>';
+		echo '<div class="error"><p>' . sprintf( __( 'WooCommerce Extra Checkout Fields for Chile depends on %s to work!', 'woocommerce-extra-checkout-fields-for-Chile' ), '<a href="https://etiendas.cl/">' . __( 'WooCommerce', 'woocommerce-extra-checkout-fields-for-chile' ) . '</a>' ) . '</p></div>';
 	}
 }
 
 /**
  * Activate method.
  */
-register_activation_hook( __FILE__, array( 'Extra_Checkout_Fields_For_Brazil', 'activate' ) );
+register_activation_hook( __FILE__, array( 'Extra_Checkout_Fields_For_Chile', 'activate' ) );
 
 /**
  * Initialize the plugin.
  */
-add_action( 'plugins_loaded', array( 'Extra_Checkout_Fields_For_Brazil', 'get_instance' ) );
+add_action( 'plugins_loaded', array( 'Extra_Checkout_Fields_For_Chile', 'get_instance' ) );
 
 endif;
