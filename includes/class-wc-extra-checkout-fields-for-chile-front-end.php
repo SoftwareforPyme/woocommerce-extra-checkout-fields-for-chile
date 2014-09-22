@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Front-end actions.
  */
-class Extra_Checkout_Fields_For_Brazil_Front_End {
+class Extra_Checkout_Fields_For_Chile_Front_End {
 
 	/**
 	 * Initialize the front-end actions.
@@ -58,17 +58,17 @@ class Extra_Checkout_Fields_For_Brazil_Front_End {
 		$data['billing_persontype']    = '';
 		$data['billing_cpf']           = '';
 		$data['billing_rg']            = '';
-		$data['billing_cnpj']          = '';
+		$data['billing_rut']          = '';
 		$data['billing_ie']            = '';
 		$data['billing_birthdate']     = '';
 		$data['billing_sex']           = '';
 		$data['billing_number']        = '';
-		$data['billing_neighborhood']  = '';
+		$data['billing_comuna']  = '';
 		$data['billing_cellphone']     = '';
 
 		// Shipping
 		$data['shipping_number']       = '';
-		$data['shipping_neighborhood'] = '';
+		$data['shipping_comuna'] = '';
 
 		return $data;
 	}
